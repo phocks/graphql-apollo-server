@@ -25,12 +25,12 @@ const typeDefs = require("./schema");
 const posts = [
   {
     text: "Hello there!",
-    author: "Someone",
+    author: "Someone"
   },
   {
     text: "How's it going?",
-    author: "Anon",
-  },
+    author: "Anon"
+  }
 ];
 
 // Resolvers define the technique for fetching the types defined in the
@@ -41,8 +41,8 @@ const resolvers = {
       console.log("Getting posts...");
 
       return posts;
-    },
-  },
+    }
+  }
 };
 
 // The ApolloServer constructor requires two parameters: your schema
