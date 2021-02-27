@@ -1,8 +1,9 @@
 const nano = require("nano")(
   `http://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`
 );
-// DATABASE MUST EXIST!!!
+
 const db = nano.use("jb_guestbook");
+
 
 
 const dayjs = require("dayjs");
