@@ -6,7 +6,7 @@ const typeDefs = gql`
   type Post {
     id: ID
     text: String
-    date: String
+    datetime: String
   }
 
   type Query {
