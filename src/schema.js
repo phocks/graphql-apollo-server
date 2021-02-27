@@ -4,7 +4,7 @@ const typeDefs = gql`
   # Your schema will go here
 
   type Post {
-    id: ID!
+    id: ID
     text: String
     date: String
   }
