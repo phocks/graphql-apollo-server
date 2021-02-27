@@ -14,13 +14,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    signBook(signIds: [ID]!): SignUpdateResponse!
+    post(text: String!): SignUpdateResponse!
   }
 
   type SignUpdateResponse {
     success: Boolean!
     message: String
-    posts: [Post]
+    post: Post
   }
 `;
 
