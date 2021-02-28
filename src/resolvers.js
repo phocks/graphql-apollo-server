@@ -4,12 +4,8 @@ const nano = require("nano")(
 
 const db = nano.use("jb_guestbook");
 
-
-
 const dayjs = require("dayjs");
 // Standard date string format dayjs().format("YYYY-MM-DDTHH:mm:ss.SSSZZ")
-
-
 
 // Test data
 let posts = [
