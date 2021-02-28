@@ -1,9 +1,6 @@
-const nano = require("nano")(
-  `http://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`
-);
-
+const couchDBPath = `http://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`;
+const nano = require("nano")(couchDBPath);
 const db = nano.use("jb_guestbook");
-
 const dayjs = require("dayjs");
 // Standard date string format dayjs().format("YYYY-MM-DDTHH:mm:ss.SSSZZ")
 
@@ -24,25 +21,21 @@ let posts = [
 const resolvers = {
   Query: {
     posts: async () => {
-      console.log("Getting posts...");
       const files = await db.find({
         selector: {},
         fields: ["text", "datetime"],
         limit: 50
       });
-      console.log(files.docs);
       return files.docs;
     }
   },
   Mutation: {
     post: async (_, { text }) => {
-      console.log("posting", text);
       const newPost = {
         text: text,
         datetime: dayjs().format("YYYY-MM-DDTHH:mm:ss.SSSZZ")
       };
       const response = await db.insert(newPost);
-      console.log(response);
       return { success: true, message: "Post added!", post: newPost };
     }
   }

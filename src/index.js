@@ -1,8 +1,6 @@
 require("dotenv").config(); // For environment values
 
 const { ApolloServer } = require("apollo-server");
-const { ApolloServerPluginInlineTrace } = require("apollo-server-core");
-// const guestbookAPI = require("./datasources/guestbook");
 
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
@@ -11,8 +9,7 @@ const resolvers = require("./resolvers");
 // definition and your set of resolvers.
 const server = new ApolloServer({
   typeDefs,
-  resolvers,
-  plugins: [ApolloServerPluginInlineTrace()]
+  resolvers
 });
 
 // The `listen` method launches a web server.
