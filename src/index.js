@@ -1,6 +1,10 @@
 require("dotenv").config(); // For environment values
+const express = require("express");
+const { ApolloServer } = require("apollo-server-express");
 
-const { ApolloServer } = require("apollo-server");
+// const { ApolloServer } = require("apollo-server");
+
+const app = express();
 
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
@@ -12,7 +16,15 @@ const server = new ApolloServer({
   resolvers
 });
 
+server.applyMiddleware({ app });
+
 // The `listen` method launches a web server.
-server.listen(process.env.SERVER_PORT).then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-});
+// server.listen(process.env.SERVER_PORT).then(({ url }) => {
+//   console.log(`🚀  Server ready at ${url}`);
+// });
+
+app.listen({ port: process.env.SERVER_PORT }, () =>
+  console.log(
+    `🚀 Server ready at http://localhost:${process.env.SERVER_PORT}${server.graphqlPath}`
+  )
+);
