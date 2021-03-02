@@ -1,10 +1,13 @@
 require("dotenv").config(); // For environment values
 const express = require("express");
+var cors = require('cors')
 const { ApolloServer } = require("apollo-server-express");
 
 // const { ApolloServer } = require("apollo-server");
 
 const app = express();
+app.use(cors())
+
 
 const typeDefs = require("./schema");
 const resolvers = require("./resolvers");
